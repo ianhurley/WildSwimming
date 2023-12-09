@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 //import com.squareup.picasso.Picasso
 import ie.setu.wildswimming.databinding.CardSwimspotBinding
 import ie.setu.wildswimming.models.SwimspotModel
+import timber.log.Timber
 
 //interface SwimspotListener {
     //fun onSwimspotClick(swimspot: SwimspotModel, position : Int)

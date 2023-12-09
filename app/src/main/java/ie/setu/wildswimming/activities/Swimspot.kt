@@ -8,6 +8,7 @@ import android.view.MenuItem
 import ie.setu.wildswimming.R
 import ie.setu.wildswimming.databinding.ActivitySwimspotBinding
 import ie.setu.wildswimming.main.WildSwimmingApp
+import ie.setu.wildswimming.models.SwimspotModel
 import timber.log.Timber
 
 class Swimspot : AppCompatActivity() {
@@ -27,9 +28,16 @@ class Swimspot : AppCompatActivity() {
             val county = swimspotLayout.county.text.toString()
             val categorey = swimspotLayout.categorey.text.toString()
 
-            Timber.i("Name: $name")
-            Timber.i("County: $county")
-            Timber.i("Categorey: $categorey")
+
+            val newSwimspot = SwimspotModel(
+                name = name,
+                county = county,
+                categorey = categorey
+            )
+
+            app.swimspotsStore.create(newSwimspot)
+
+            startActivity(Intent(this, SwimspotList::class.java))
 
         }
     }
