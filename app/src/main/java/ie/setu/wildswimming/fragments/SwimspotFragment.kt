@@ -1,17 +1,19 @@
-package ie.setu.wildswimming
+package ie.setu.wildswimming.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import ie.setu.wildswimming.activities.SwimspotList
-import ie.setu.wildswimming.databinding.ActivitySwimspotBinding
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import ie.setu.wildswimming.R
 import ie.setu.wildswimming.databinding.FragmentSwimspotBinding
 import ie.setu.wildswimming.main.WildSwimmingApp
 import ie.setu.wildswimming.models.SwimspotModel
-import timber.log.Timber
 
 class SwimspotFragment : Fragment() {
 
@@ -24,6 +26,7 @@ class SwimspotFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as WildSwimmingApp
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -75,5 +78,15 @@ class SwimspotFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_swimspot, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item,
+            requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 }

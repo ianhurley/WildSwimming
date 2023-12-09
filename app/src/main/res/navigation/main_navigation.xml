@@ -7,12 +7,29 @@
 
     <fragment
         android:id="@+id/swimspotFragment"
-        android:name="ie.setu.wildswimming.SwimspotFragment"
+        android:name="ie.setu.wildswimming.fragments.SwimspotFragment"
         android:label="fragment_swimspot"
-        tools:layout="@layout/fragment_swimspot" />
+        tools:layout="@layout/fragment_swimspot" >
+        <action
+            android:id="@+id/action_swimspotFragment_to_swimspotListFragment"
+            app:destination="@id/swimspotListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/swimspotListFragment"
-        android:name="ie.setu.wildswimming.SwimspotListFragment"
+        android:name="ie.setu.wildswimming.fragments.SwimspotListFragment"
         android:label="fragment_swimspot_list"
-        tools:layout="@layout/fragment_swimspot_list" />
+        tools:layout="@layout/fragment_swimspot_list" >
+        <action
+            android:id="@+id/action_swimspotListFragment_to_swimspotFragment"
+            app:destination="@id/swimspotFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ie.setu.wildswimming.fragments.aboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>
