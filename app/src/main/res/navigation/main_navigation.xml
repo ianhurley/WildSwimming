@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/swimspotFragment"
         android:name="ie.setu.wildswimming.fragments.SwimspotFragment"
-        android:label="fragment_swimspot"
+        android:label="@string/action_swimspot"
         tools:layout="@layout/fragment_swimspot" >
         <action
             android:id="@+id/action_swimspotFragment_to_swimspotListFragment"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/swimspotListFragment"
         android:name="ie.setu.wildswimming.fragments.SwimspotListFragment"
-        android:label="fragment_swimspot_list"
+        android:label="@string/action_swimspotlist"
         tools:layout="@layout/fragment_swimspot_list" >
         <action
             android:id="@+id/action_swimspotListFragment_to_swimspotFragment"
@@ -30,6 +30,6 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="ie.setu.wildswimming.fragments.aboutFragment"
-        android:label="fragment_about"
+        android:label="@string/action_about"
         tools:layout="@layout/fragment_about" />
 </navigation>
