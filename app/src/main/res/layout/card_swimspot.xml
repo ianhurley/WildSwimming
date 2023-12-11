@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -11,17 +12,17 @@
 
 
     <androidx.cardview.widget.CardView
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:elevation="24dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/relativeLayout"
+        <RelativeLayout
+            android:id="@+id/cardSwimspot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp">
+
 
             <ImageView
                 android:id="@+id/imageIcon"
@@ -48,28 +49,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:textAlignment="viewStart"
-                app:layout_constraintStart_toStartOf="@+id/name"
-                app:layout_constraintTop_toTopOf="parent"
                 android:text="@{swimspot.county}"
+                android:textAlignment="viewStart"
+                android:layout_below="@+id/name"
+                android:layout_alignParentStart="true"
                 tools:text="County" />
 
             <TextView
                 android:id="@+id/categorey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/custom_button"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@{swimspot.categorey}"
                 android:textAlignment="viewStart"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageIcon"
-                app:layout_constraintStart_toStartOf="@+id/name"
-                android:text="@{swimspot.categorey}"
+                android:layout_below="@+id/county"
+                android:layout_alignParentStart="true"
                 tools:text="Categorey" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -12,7 +12,7 @@ interface SwimspotClickListener {
     fun onSwimspotClick(swimspot: SwimspotModel)
 }
 
-class SwimspotAdapter constructor(private var swimspots: List<SwimspotModel>, private val listener: SwimspotClickListener)
+class SwimspotAdapter constructor(private var swimspots: ArrayList<SwimspotModel>, private val listener: SwimspotClickListener)
     : RecyclerView.Adapter<SwimspotAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -42,6 +42,11 @@ class SwimspotAdapter constructor(private var swimspots: List<SwimspotModel>, pr
             //Picasso.get().load(swimspot.photo).resize(200,200).into(binding.imageIcon)
             //binding.root.setOnClickListener { listener.onSwimspotClick(swimspot,adapterPosition)}
         }
+    }
+
+    fun removeAt(position: Int) {
+        swimspots.removeAt(position)
+        notifyItemRemoved(position)
     }
 
 }

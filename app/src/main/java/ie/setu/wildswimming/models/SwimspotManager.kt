@@ -50,4 +50,8 @@ object SwimspotManager : SwimspotStore {
         swimspots.forEach { i("Swimspot ${it}") }
         //swimspots.forEach{ i("${it}") }
     }
+
+    override fun delete(id: String) {
+        TODO("Not yet implemented")
+    }
 }

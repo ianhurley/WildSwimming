@@ -6,6 +6,6 @@ interface SwimspotStore {
     fun create(swimspot: SwimspotModel)
 
     //fun update(swimspot: SwimspotModel)
-    //fun delete(swimspot: SwimspotModel)
+    fun delete(id: String)
 
 }

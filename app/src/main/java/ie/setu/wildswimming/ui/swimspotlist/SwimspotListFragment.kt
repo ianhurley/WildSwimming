@@ -16,7 +16,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ie.setu.swimspot.adapters.SwimspotAdapter
 import ie.setu.swimspot.adapters.SwimspotClickListener
@@ -24,6 +26,7 @@ import ie.setu.wildswimming.R
 import ie.setu.wildswimming.databinding.FragmentSwimspotListBinding
 import ie.setu.wildswimming.main.WildSwimmingApp
 import ie.setu.wildswimming.models.SwimspotModel
+import ie.setu.wildswimming.utils.SwipeToDeleteCallback
 
 
 class SwimspotListFragment : Fragment(), SwimspotClickListener {
@@ -53,8 +56,18 @@ class SwimspotListFragment : Fragment(), SwimspotClickListener {
         swimspotListViewModel = ViewModelProvider(this).get(SwimspotListViewModel::class.java)
         swimspotListViewModel.observableSwimspotsList.observe(viewLifecycleOwner, Observer {
                 swimspots ->
-            swimspots?.let { render(swimspots) }
+            swimspots?.let { render(swimspots as ArrayList<SwimspotModel>) }
         })
+
+        val swipeDeleteHandler = object : SwipeToDeleteCallback(requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = fragBinding.recyclerView.adapter as SwimspotAdapter
+                adapter.removeAt(viewHolder.adapterPosition)
+
+            }
+        }
+        val itemTouchDeleteHelper = ItemTouchHelper(swipeDeleteHandler)
+        itemTouchDeleteHelper.attachToRecyclerView(fragBinding.recyclerView)
 
         val fab: FloatingActionButton = fragBinding.fab
         fab.setOnClickListener {
@@ -81,7 +94,7 @@ class SwimspotListFragment : Fragment(), SwimspotClickListener {
             }     }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
-    private fun render(swimspotsList: List<SwimspotModel>) {
+    private fun render(swimspotsList: ArrayList<SwimspotModel>) {
         fragBinding.recyclerView.adapter = SwimspotAdapter(swimspotsList,this)
         if (swimspotsList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
