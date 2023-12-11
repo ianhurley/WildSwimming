@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/swimspotFragment">
+    app:startDestination="@id/swimspotListFragment">
 
     <fragment
         android:id="@+id/swimspotFragment"
-        android:name="ie.setu.wildswimming.fragments.SwimspotFragment"
+        android:name="ie.setu.wildswimming.ui.swimspot.SwimspotFragment"
         android:label="@string/action_swimspot"
         tools:layout="@layout/fragment_swimspot" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/swimspotListFragment"
-        android:name="ie.setu.wildswimming.fragments.SwimspotListFragment"
+        android:name="ie.setu.wildswimming.ui.swimspotlist.SwimspotListFragment"
         android:label="@string/action_swimspotlist"
         tools:layout="@layout/fragment_swimspot_list" >
         <action
@@ -26,10 +26,25 @@
             app:destination="@id/swimspotFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_swimspotListFragment_to_swimspotDetailFragment"
+            app:destination="@id/swimspotDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="ie.setu.wildswimming.fragments.aboutFragment"
+        android:name="ie.setu.wildswimming.ui.about.aboutFragment"
         android:label="@string/action_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/swimspotDetailFragment"
+        android:name="ie.setu.wildswimming.ui.detail.SwimspotDetailFragment"
+        android:label="@string/swimspotDetails"
+        tools:layout="@layout/fragment_swimspot_detail" >
+        <action
+            android:id="@+id/action_swimspotDetailFragment_to_swimspotListFragment"
+            app:destination="@id/swimspotListFragment" />
+        <argument
+            android:name="swimspotid"
+            app:argType="long" />
+    </fragment>
 </navigation>

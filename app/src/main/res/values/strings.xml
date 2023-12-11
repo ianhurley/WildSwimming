@@ -40,4 +40,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="SwimspotsNotFound">No Swimspots Yet...\nGo Create a Swimspot</string>
+    <string name="swimspotError">Error : Couldn\'t Create a Swimspot...</string>
+
+    <string name="swimspotDetails">Swimspot Details</string>
+    <string name="name">Name :</string>
+    <string name="county">County :</string>
+    <string name="categorey">Categorey :</string>
+    <string name="upvotes">UpVotes :</string>
+
 </resources>

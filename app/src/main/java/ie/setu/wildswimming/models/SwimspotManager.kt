@@ -8,7 +8,7 @@ internal fun getId(): Long {
     return lastId++
 }
 
-class SwimspotMemStore : SwimspotStore {
+object SwimspotManager : SwimspotStore {
 
     val swimspots = ArrayList<SwimspotModel>()
 

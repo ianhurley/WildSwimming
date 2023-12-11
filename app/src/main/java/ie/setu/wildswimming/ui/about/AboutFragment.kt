@@ -1,4 +1,4 @@
-package ie.setu.wildswimming.fragments
+package ie.setu.wildswimming.ui.about
 
 import android.os.Bundle
 import android.view.LayoutInflater
