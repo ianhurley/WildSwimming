@@ -6,15 +6,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/swimspotFragment"
-            android:icon="@drawable/baseline_water_24_blue"
+            android:icon="@drawable/baseline_add_24"
             android:title="@string/action_swimspot" />
         <item
             android:id="@+id/swimspotListFragment"
             android:icon="@drawable/baseline_list_24"
             android:title="@string/action_swimspotlist" />
         <item
+
+            android:icon="@drawable/baseline_map_24"
+            android:title="@string/action_map" />
+        <item
             android:id="@+id/aboutFragment"
-            android:icon="@android:drawable/ic_menu_info_details"
+            android:icon="@drawable/baseline_info_outline_24"
             android:title="@string/action_about" />
     </group>
 
@@ -28,6 +32,16 @@
                 android:id="@+id/nav_send"
                 android:icon="@android:drawable/ic_menu_send"
                 android:title="@string/action_send" />
+        </menu>
+    </item>
+
+    <item android:title="Access Control">
+        <menu>
+            <item
+                android:id="@+id/signout"
+                android:icon="@drawable/baseline_exit_to_app_24"
+                android:onClick="signOut"
+                android:title="@string/sign_out" />
         </menu>
     </item>
 </menu>

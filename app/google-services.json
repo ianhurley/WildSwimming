@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "636881167746",
+    "project_id": "wildswimming-44574",
+    "storage_bucket": "wildswimming-44574.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636881167746:android:9958ffc02ca042429edb9b",
+        "android_client_info": {
+          "package_name": "ie.setu.wildswimming"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG44Nm63D3jeRiL-qj2sOyNiviB_dn0UU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
