@@ -10,9 +10,9 @@ import timber.log.Timber
 class SwimspotDetailViewModel : ViewModel() {
     private val swimspot = MutableLiveData<SwimspotModel>()
 
-    val observableSwimspot: LiveData<SwimspotModel>
+    var observableSwimspot: LiveData<SwimspotModel>
         get() = swimspot
-        //set(value) {swimspot.value = value.value}
+        set(value) {swimspot.value = value.value}
 
     fun getSwimspot(userid: String, id: String) {
         try {

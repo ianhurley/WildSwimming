@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseUser
 import ie.setu.wildswimming.firebase.FirebaseDBManager
 //import ie.setu.wildswimming.models.SwimspotManager
 import ie.setu.wildswimming.models.SwimspotModel
+import timber.log.Timber
 
 class SwimspotViewModel : ViewModel() {
 
@@ -19,8 +20,10 @@ class SwimspotViewModel : ViewModel() {
                     swimspot: SwimspotModel) {
         status.value = try {
             FirebaseDBManager.create(firebaseUser,swimspot)
+            Timber.i("Swimspot added successfully.")
             true
         } catch (e: IllegalArgumentException) {
+            Timber.e("Error adding swimspot: ${e.message}")
             false
         }
     }

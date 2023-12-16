@@ -20,7 +20,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import ie.setu.wildswimming.R
 import ie.setu.wildswimming.databinding.FragmentSwimspotBinding
-import ie.setu.wildswimming.main.WildSwimmingApp
+//import ie.setu.wildswimming.main.WildSwimmingApp
 import ie.setu.wildswimming.models.SwimspotModel
 import ie.setu.wildswimming.ui.auth.LoggedInViewModel
 import ie.setu.wildswimming.ui.swimspotlist.SwimspotListViewModel
@@ -63,6 +63,8 @@ class SwimspotFragment : Fragment() {
         setButtonListener(fragBinding)
         return root;
     }
+
+
 
     private fun setupMenu() {
         (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
@@ -123,7 +125,5 @@ class SwimspotFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-
     }
-
 }
