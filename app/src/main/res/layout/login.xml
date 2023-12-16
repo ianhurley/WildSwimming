@@ -3,9 +3,20 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_100"
+    android:background="@drawable/wildswimming"
     android:orientation="vertical"
     android:weightSum="4">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -92,8 +103,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginEnd="8dp"
                 android:text="@string/sign_in"
+                android:background="@drawable/custom_button_alt"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
+
 
             <Button
                 android:id="@+id/emailCreateAccountButton"
@@ -101,7 +115,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="8dp"
                 android:text="@string/create_account"
+                android:background="@drawable/custom_button_alt"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
         </LinearLayout>
 

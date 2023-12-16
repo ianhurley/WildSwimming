@@ -3,7 +3,9 @@ package ie.setu.wildswimming.ui.swimspot
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ie.setu.wildswimming.models.SwimspotManager
+import com.google.firebase.auth.FirebaseUser
+import ie.setu.wildswimming.firebase.FirebaseDBManager
+//import ie.setu.wildswimming.models.SwimspotManager
 import ie.setu.wildswimming.models.SwimspotModel
 
 class SwimspotViewModel : ViewModel() {
@@ -13,9 +15,10 @@ class SwimspotViewModel : ViewModel() {
     val observableStatus: LiveData<Boolean>
         get() = status
 
-    fun addSwimspot(swimspot: SwimspotModel) {
+    fun addSwimspot(firebaseUser: MutableLiveData<FirebaseUser>,
+                    swimspot: SwimspotModel) {
         status.value = try {
-            SwimspotManager.create(swimspot)
+            FirebaseDBManager.create(firebaseUser,swimspot)
             true
         } catch (e: IllegalArgumentException) {
             false

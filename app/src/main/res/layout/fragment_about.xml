@@ -8,6 +8,20 @@
     android:background="@color/color_primary"
     tools:context=".ui.about.aboutFragment">
 
+    <TextView
+        android:id="@+id/AboutTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="624dp"
+        android:text="@string/about_title"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="182dp"
@@ -21,14 +35,13 @@
         app:srcCompat="@drawable/baseline_water_24" />
 
     <TextView
-        android:id="@+id/tvAboutUs"
+        android:id="@+id/About"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/about_message"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

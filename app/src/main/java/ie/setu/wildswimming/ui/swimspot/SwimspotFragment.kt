@@ -11,15 +11,20 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import ie.setu.wildswimming.R
 import ie.setu.wildswimming.databinding.FragmentSwimspotBinding
 import ie.setu.wildswimming.main.WildSwimmingApp
 import ie.setu.wildswimming.models.SwimspotModel
+import ie.setu.wildswimming.ui.auth.LoggedInViewModel
+import ie.setu.wildswimming.ui.swimspotlist.SwimspotListViewModel
+import timber.log.Timber
 
 class SwimspotFragment : Fragment() {
 
@@ -28,12 +33,12 @@ class SwimspotFragment : Fragment() {
     private var _fragBinding: FragmentSwimspotBinding? = null
     private val fragBinding get() = _fragBinding!!
     private lateinit var swimspotViewModel: SwimspotViewModel
+    private val swimspotListViewModel: SwimspotListViewModel by activityViewModels()
+    private val loggedInViewModel : LoggedInViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //app = activity?.application as WildSwimmingApp
-        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -43,7 +48,7 @@ class SwimspotFragment : Fragment() {
 
         _fragBinding = FragmentSwimspotBinding.inflate(inflater, container, false)
         val root = fragBinding.root
-        activity?.title = getString(R.string.action_swimspot)
+        //activity?.title = getString(R.string.action_swimspot)
         setupMenu()
 
         swimspotViewModel = ViewModelProvider(this).get(SwimspotViewModel::class.java)
@@ -83,8 +88,8 @@ class SwimspotFragment : Fragment() {
         when (status) {
             true -> {
                 view?.let {
-                    //Uncomment this if you want to immediately return to SwimspotList
-                    //findNavController().popBackStack()
+
+                    findNavController().popBackStack()
                 }
             }
 
@@ -100,17 +105,12 @@ class SwimspotFragment : Fragment() {
             val county = layout.county.text.toString()
             val categorey = layout.categorey.text.toString()
 
-            //app.swimspotsStore.create(
-                //SwimspotModel(
-                    //name = name,
-                    //county = county,
-                    //categorey = categorey
-                //)
-            //)
+            Timber.i("Name: $name")
+            Timber.i("County: $county")
+            Timber.i("Categorey: $categorey")
 
-            //startActivity(Intent(context, SwimspotList::class.java))
 
-            swimspotViewModel.addSwimspot(SwimspotModel(name = name, county = county, categorey = categorey))
+            swimspotViewModel.addSwimspot(loggedInViewModel.liveFirebaseUser,SwimspotModel(name = name, county = county, categorey = categorey,email = loggedInViewModel.liveFirebaseUser.value?.email!!))
 
         }
     }
@@ -118,6 +118,12 @@ class SwimspotFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _fragBinding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
     }
 
 }

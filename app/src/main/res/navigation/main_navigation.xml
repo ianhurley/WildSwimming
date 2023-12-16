@@ -45,6 +45,6 @@
             app:destination="@id/swimspotListFragment" />
         <argument
             android:name="swimspotid"
-            app:argType="long" />
+            app:argType="string" />
     </fragment>
 </navigation>

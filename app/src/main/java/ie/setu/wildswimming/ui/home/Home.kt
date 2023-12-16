@@ -31,8 +31,9 @@ class Home : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.sleep(3000)
-        installSplashScreen()
+
+        //Thread.sleep(3000)
+        //installSplashScreen()
 
         homeBinding = HomeBinding.inflate(layoutInflater)
         setContentView(homeBinding.root)

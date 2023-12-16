@@ -1,4 +1,4 @@
-package ie.setu.wildswimming.models
+/*package ie.setu.wildswimming.models
 
 import timber.log.Timber.Forest.i
 
@@ -17,7 +17,7 @@ object SwimspotManager : SwimspotStore {
     }
 
     override fun create(swimspot: SwimspotModel) {
-        swimspot.id = getId()
+        swimspot.uid = getId()
         swimspots.add(swimspot)
         logAll()
     }
@@ -41,7 +41,7 @@ object SwimspotManager : SwimspotStore {
     }*/
 
     override fun findById(id:Long) : SwimspotModel? {
-        val foundSwimspot: SwimspotModel? = swimspots.find { it.id == id }
+        val foundSwimspot: SwimspotModel? = swimspots.find { it.uid == id }
         return foundSwimspot
     }
 
@@ -54,4 +54,4 @@ object SwimspotManager : SwimspotStore {
     override fun delete(id: String) {
         TODO("Not yet implemented")
     }
-}
+}*/

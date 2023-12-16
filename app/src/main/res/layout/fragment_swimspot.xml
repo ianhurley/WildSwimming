@@ -95,6 +95,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/county" />
 
+    <Button
+        android:id="@+id/choosePhoto"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_button_alt"
+        android:text="@string/button_addPhoto"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="@+id/categorey"
+        app:layout_constraintTop_toBottomOf="@+id/categorey" />
+
+    <Button
+        android:id="@+id/swimspotLocation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_button_alt"
+        android:text="@string/button_location"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="@+id/categorey"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/choosePhoto"
+        app:layout_constraintTop_toBottomOf="@+id/categorey" />
+
+    <ImageView
+        android:id="@+id/swimspotPhoto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_addSwimspot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choosePhoto"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/baseline_water_24_blue" />
+
 
     <Button
         android:id="@+id/button_addSwimspot"

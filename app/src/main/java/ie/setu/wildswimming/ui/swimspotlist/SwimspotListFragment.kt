@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,21 +27,24 @@ import ie.setu.wildswimming.R
 import ie.setu.wildswimming.databinding.FragmentSwimspotListBinding
 import ie.setu.wildswimming.main.WildSwimmingApp
 import ie.setu.wildswimming.models.SwimspotModel
+import ie.setu.wildswimming.ui.auth.LoggedInViewModel
 import ie.setu.wildswimming.utils.SwipeToDeleteCallback
+import ie.setu.wildswimming.utils.SwipeToEditCallback
 
 
 class SwimspotListFragment : Fragment(), SwimspotClickListener {
 
-    lateinit var app: WildSwimmingApp
+    //lateinit var app: WildSwimmingApp
     private var _fragBinding: FragmentSwimspotListBinding? = null
     private val fragBinding get() = _fragBinding!!
-    private lateinit var swimspotListViewModel: SwimspotListViewModel
+    private val swimspotListViewModel: SwimspotListViewModel by activityViewModels()
+    private val loggedInViewModel : LoggedInViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //app = activity?.application as WildSwimmingApp
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -51,29 +55,39 @@ class SwimspotListFragment : Fragment(), SwimspotClickListener {
         val root = fragBinding.root
         //activity?.title = getString(R.string.action_swimspotlist)
         setupMenu()
-        fragBinding.recyclerView.setLayoutManager(LinearLayoutManager(activity))
+        fragBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        swimspotListViewModel = ViewModelProvider(this).get(SwimspotListViewModel::class.java)
+        fragBinding.fab.setOnClickListener {
+            val action = SwimspotListFragmentDirections.actionSwimspotListFragmentToSwimspotFragment()
+            findNavController().navigate(action)
+        }
+
+        //swimspotListViewModel = ViewModelProvider(this).get(SwimspotListViewModel::class.java)
         swimspotListViewModel.observableSwimspotsList.observe(viewLifecycleOwner, Observer {
                 swimspots ->
-            swimspots?.let { render(swimspots as ArrayList<SwimspotModel>) }
+            swimspots?.let {
+                render(swimspots as ArrayList<SwimspotModel>) }
         })
 
         val swipeDeleteHandler = object : SwipeToDeleteCallback(requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val adapter = fragBinding.recyclerView.adapter as SwimspotAdapter
                 adapter.removeAt(viewHolder.adapterPosition)
+                swimspotListViewModel.delete(swimspotListViewModel.liveFirebaseUser.value?.uid!!,
+                    (viewHolder.itemView.tag as SwimspotModel).uid!!)
 
             }
         }
         val itemTouchDeleteHelper = ItemTouchHelper(swipeDeleteHandler)
         itemTouchDeleteHelper.attachToRecyclerView(fragBinding.recyclerView)
 
-        val fab: FloatingActionButton = fragBinding.fab
-        fab.setOnClickListener {
-            val action = SwimspotListFragmentDirections.actionSwimspotListFragmentToSwimspotFragment()
-            findNavController().navigate(action)
+        val swipeEditHandler = object : SwipeToEditCallback(requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                onSwimspotClick(viewHolder.itemView.tag as SwimspotModel)
+            }
         }
+        val itemTouchEditHelper = ItemTouchHelper(swipeEditHandler)
+        itemTouchEditHelper.attachToRecyclerView(fragBinding.recyclerView)
 
         return root
     }
@@ -89,13 +103,17 @@ class SwimspotListFragment : Fragment(), SwimspotClickListener {
             }
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 // Validate and handle the selected menu item
-                return NavigationUI.onNavDestinationSelected(menuItem,
-                    requireView().findNavController())
-            }     }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+                return NavigationUI.onNavDestinationSelected(
+                    menuItem,
+                    requireView().findNavController()
+                )
+            }
+            }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     private fun render(swimspotsList: ArrayList<SwimspotModel>) {
         fragBinding.recyclerView.adapter = SwimspotAdapter(swimspotsList,this)
+
         if (swimspotsList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
             fragBinding.swimspotsNotFound.visibility = View.VISIBLE
@@ -107,7 +125,12 @@ class SwimspotListFragment : Fragment(), SwimspotClickListener {
 
     override fun onResume() {
         super.onResume()
-        swimspotListViewModel.load()
+        loggedInViewModel.liveFirebaseUser.observe(viewLifecycleOwner, Observer { firebaseUser ->
+            if (firebaseUser != null) {
+                swimspotListViewModel.liveFirebaseUser.value = firebaseUser
+                swimspotListViewModel.load()
+            }
+        })
     }
 
     override fun onDestroyView() {
@@ -116,7 +139,7 @@ class SwimspotListFragment : Fragment(), SwimspotClickListener {
     }
 
     override fun onSwimspotClick(swimspot: SwimspotModel) {
-        val action = SwimspotListFragmentDirections.actionSwimspotListFragmentToSwimspotDetailFragment(swimspot.id)
+        val action = SwimspotListFragmentDirections.actionSwimspotListFragmentToSwimspotDetailFragment(swimspot.uid!!)
         findNavController().navigate(action)
     }
 }

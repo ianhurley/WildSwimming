@@ -33,6 +33,7 @@ class SwimspotAdapter constructor(private var swimspots: ArrayList<SwimspotModel
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(swimspot: SwimspotModel, listener: SwimspotClickListener) {
+            binding.root.tag = swimspot
             binding.swimspot = swimspot
             binding.root.setOnClickListener { listener.onSwimspotClick(swimspot) }
             binding.executePendingBindings()
