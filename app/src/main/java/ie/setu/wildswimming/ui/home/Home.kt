@@ -14,11 +14,13 @@ import androidx.navigation.ui.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseUser
+import com.squareup.picasso.Picasso
 import ie.setu.wildswimming.R
 import ie.setu.wildswimming.databinding.HomeBinding
 import ie.setu.wildswimming.databinding.NavHeaderBinding
 import ie.setu.wildswimming.ui.auth.LoggedInViewModel
 import ie.setu.wildswimming.ui.auth.Login
+import ie.setu.wildswimming.utils.customTransformation
 
 
 class Home : AppCompatActivity() {
@@ -76,6 +78,16 @@ class Home : AppCompatActivity() {
         var headerView = homeBinding.navView.getHeaderView(0)
         navHeaderBinding = NavHeaderBinding.bind(headerView)
         navHeaderBinding.navHeaderEmail.text = currentUser.email
+
+
+        if(currentUser.photoUrl != null && currentUser.displayName != null) {
+            navHeaderBinding.navHeaderName.text = currentUser.displayName
+            Picasso.get().load(currentUser.photoUrl)
+                .resize(200, 200)
+                .transform(customTransformation())
+                .centerCrop()
+                .into(navHeaderBinding.imageView)
+        }
     }
 
     fun signOut(item: MenuItem) {

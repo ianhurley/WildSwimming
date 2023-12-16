@@ -13,7 +13,12 @@
           "package_name": "ie.setu.wildswimming"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "636881167746-7r32rpesrq7mvb0o4fqb95qsfons2bpe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAG44Nm63D3jeRiL-qj2sOyNiviB_dn0UU"
@@ -21,7 +26,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636881167746-7r32rpesrq7mvb0o4fqb95qsfons2bpe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
