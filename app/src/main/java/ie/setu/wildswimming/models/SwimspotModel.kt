@@ -10,6 +10,10 @@ data class SwimspotModel(
     var name: String = "",
     var county: String = "",
     var categorey: String = "",
+    var photo: Uri = Uri.EMPTY,
+    var lat : Double = 0.0,
+    var lng: Double = 0.0,
+    var zoom: Float = 0f,
     var email: String? = "joe@bloggs.com")
     : Parcelable
 {
@@ -25,10 +29,6 @@ data class SwimspotModel(
     }
 }
 
-                         //var photo: Uri = Uri.EMPTY,
-                         //var lat : Double = 0.0,
-                         //var lng: Double = 0.0,
-                         //var zoom: Float = 0f)
 
 
 //@Parcelize

@@ -28,6 +28,10 @@
                 android:id="@+id/imageIcon"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:contentDescription="@string/change_swimspot_photo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,10 +41,12 @@
                 android:id="@+id/name"
                 android:layout_width="252dp"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="16dp"
+                android:text="@{swimspot.name}"
                 android:textAlignment="viewStart"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@{swimspot.name}"
                 tools:layout_editor_absoluteY="1dp"
                 tools:text="name" />
 
@@ -48,18 +54,24 @@
                 android:id="@+id/county"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_below="@+id/name"
+                android:layout_alignStart="@+id/name"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
                 android:text="@{swimspot.county}"
                 android:textAlignment="viewStart"
-                android:layout_below="@+id/name"
-                android:layout_alignParentStart="true"
                 tools:text="County" />
 
             <TextView
                 android:id="@+id/categorey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_below="@+id/county"
+                android:layout_alignStart="@+id/county"
+                android:layout_alignBottom="@+id/imageIcon"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/custom_button"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
@@ -68,8 +80,6 @@
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
-                android:layout_below="@+id/county"
-                android:layout_alignParentStart="true"
                 tools:text="Categorey" />
 
         </RelativeLayout>

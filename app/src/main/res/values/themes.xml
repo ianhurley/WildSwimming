@@ -66,8 +66,8 @@
     <!-- Splashscreen -->
 
     <style name="Theme.App.Splashscreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/colorAccent</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/baseline_water_24</item>
+        <item name="windowSplashScreenBackground">@color/colorWhite</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/baseline_water_24_blue</item>
         <item name="postSplashScreenTheme">@style/Theme.WildSwimming</item>
     </style>
 

@@ -18,6 +18,7 @@
 
         <activity
             android:name="ie.setu.wildswimming.ui.auth.Login"
+            android:theme="@style/Theme.App.Splashscreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

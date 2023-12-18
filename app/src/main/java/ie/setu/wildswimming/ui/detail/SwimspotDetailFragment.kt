@@ -42,7 +42,7 @@ class SwimspotDetailFragment : Fragment() {
         }
 
         fragBinding.deleteSwimspotButton.setOnClickListener {
-            swimspotListViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.email!!,
+            swimspotListViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.uid!!,
                 detailViewModel.observableSwimspot.value?.uid!!)
             findNavController().navigateUp()
         }
