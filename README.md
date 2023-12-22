@@ -17,17 +17,17 @@ Data persistence is supported through Firebase Realtime Database through data sy
 
 ## How to use/ what to expect:
 
-User can log Swimspot Name, County and body of water Categorey. Add photograph and lat/lng location via Google Maps.
-Swimspots can be edited/updated or deleted as necessary.
+Users can log Swimspots Name, County and body of water Categorey. Upload photo and map location (not fully re-implemented in V2)
+Swimspots can be edited/updated or deleted as necessary from the database.
 
 ## Known bugs/problems:
 
-Edit/Update feature not fully resolved.
-Image selecting for Swimspot not persisted as yet with database, and not visible with card detail.
+Image selecting for Swimspot not yet persisted with database, and not visible within card detail.
 
-## UML Class Diagram:
+## UML Class Diagrams:
 
-xxx
+![uml.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fuml.png)
+![uml2.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fuml2.png)
 
 ## UX/DX Approach Adopted:
 
